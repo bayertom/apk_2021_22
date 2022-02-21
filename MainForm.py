@@ -49,7 +49,7 @@ class Ui_MainForm(object):
 
     def retranslateUi(self, MainForm):
         _translate = QtCore.QCoreApplication.translate
-        MainForm.setWindowTitle(_translate("MainForm", "GUI example"))
+        MainForm.setWindowTitle(_translate("MainForm", "Point and polygon position"))
         self.pushButton.setText(_translate("MainForm", "Analyze"))
         self.pushButton_3.setText(_translate("MainForm", "Point/Polygon"))
         self.label.setText(_translate("MainForm", "Position:"))

@@ -31,6 +31,7 @@ class Algorithms:
         # Colinear point
         return -1
 
+
     def get2LinesAngle(self, p1: QPoint, p2: QPoint, p3: QPoint, p4:QPoint):
         # Get angle between 2 vectors
         ux = p2.x() - p1.x()
@@ -42,11 +43,11 @@ class Algorithms:
         uv = ux*vx + uy*vy
 
         # Norms
-        nu = (ux**2+uy**2)**0.5
-        nv = (vx**2+vy**2)**0.5
+        nu = (ux**2 + uy**2)**0.5
+        nv = (vx**2 + vy**2)**0.5
 
         # Angle
-        return abs (acos(uv/(nu*nv)))
+        return abs(acos(uv/(nu*nv)))
 
 
 
