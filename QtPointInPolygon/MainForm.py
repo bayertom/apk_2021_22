@@ -63,7 +63,7 @@ class Ui_MainForm(object):
         pass
 
     def switchSourceClick(self):
-        pass
+        self.Canvas.setSource()
 
 
 if __name__ == "__main__":

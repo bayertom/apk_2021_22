@@ -50,4 +50,35 @@ class Algorithms:
         return abs(acos(uv/(nu*nv)))
 
 
+    def getPositionPointAndPolygon(self, q:QPoint, pol:QPolygon) -> int:
+        # Analyzes position of the point and polygon
+        n = len(pol)
+        omega_sum = 0
+
+        # Loop through polygon nodes
+        for i in range(n):
+
+            # Analyze position of q and pi, pi+1
+            pos = getPointAndLinePosition(q, pol[i], pol[(i+1)%n])
+
+            # Angle between q and pi, pi+1
+            omega = get2LinesAngle(q, pol[i], q, pol[(i+1)%n])
+
+            # Computing winding number
+            if pos == 1:
+                # Point in the left halfplane
+                omega_sum += omega
+            else:
+                # Point in the right halfplane
+                omega_sum -= omega
+
+        # Point q inside polygon
+        epsilon = 1.0e-10
+        if abs(abs(omega_sum)-2*pi) < epsilon:
+            return 1
+
+        # Point q outside polygon
+        return 0
+
+
 
