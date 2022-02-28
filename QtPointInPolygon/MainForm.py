@@ -1,5 +1,6 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 from draw import Draw
+from algorithms import Algorithms
 
 class Ui_MainForm(object):
     def setupUi(self, MainForm):
@@ -57,7 +58,19 @@ class Ui_MainForm(object):
         self.pushButton_2.setText(_translate("MainForm", "Clear"))
 
     def analyzeClick(self):
-        pass
+        #Get point and polygon
+        q = self.Canvas.getQ()
+        pol = self.Canvas.getPol()
+
+        #Analyze position
+        a = Algorithms()
+        res = a.getPositionPointAndPolygon(q, pol)
+
+        #Print results
+        if res == 1:
+            self.label_2.setText("Inside")
+        else:
+            self.label_2.setText("Outside")
 
     def clearClick(self):
         pass

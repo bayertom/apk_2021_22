@@ -1,1 +1,1 @@
-py -3.10-64 -m PyInstaller --onefile --windowed  MainForm_.py
+py -3.10-64 -m PyInstaller --onefile --windowed  MainForm.py

@@ -37,20 +37,20 @@ class Draw(QWidget):
         #Start draw
         qp.begin(self)
 
-        # Set pen and brush - point
-        qp.setPen(Qt.GlobalColor.green)
-        qp.setBrush(Qt.GlobalColor.magenta)
-
-        # Draw ellipse
-        r = 5
-        qp.drawEllipse(self.q.x-r,self.q.y-r,2*r,2*r)
-
         #Set pen and brush - polygon
         qp.setPen(Qt.GlobalColor.blue)
         qp.setBrush(Qt.GlobalColor.gray)
 
         #Draw polygon
         qp.drawPolygon(self.pol)
+
+        # Set pen and brush - point
+        qp.setPen(Qt.GlobalColor.green)
+        qp.setBrush(Qt.GlobalColor.yellow)
+
+        # Draw ellipse
+        r = 5
+        qp.drawEllipse(self.q.x() - r, self.q.y() - r, 2 * r, 2 * r)
 
         #End draw
         qp.end()
@@ -59,7 +59,7 @@ class Draw(QWidget):
         # Get q
         return self.q
 
-    def getpol(self):
+    def getPol(self):
         # Get polygon
         return self.pol
 

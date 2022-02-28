@@ -59,10 +59,10 @@ class Algorithms:
         for i in range(n):
 
             # Analyze position of q and pi, pi+1
-            pos = getPointAndLinePosition(q, pol[i], pol[(i+1)%n])
+            pos = self.getPointAndLinePosition(q, pol[i], pol[(i+1)%n])
 
             # Angle between q and pi, pi+1
-            omega = get2LinesAngle(q, pol[i], q, pol[(i+1)%n])
+            omega = self.get2LinesAngle(q, pol[i], q, pol[(i+1)%n])
 
             # Computing winding number
             if pos == 1:
