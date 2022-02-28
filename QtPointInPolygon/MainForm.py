@@ -73,9 +73,11 @@ class Ui_MainForm(object):
             self.label_2.setText("Outside")
 
     def clearClick(self):
+        #Clear window, TBD
         pass
 
     def switchSourceClick(self):
+        #Change source
         self.Canvas.setSource()
 
 

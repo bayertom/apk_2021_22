@@ -79,6 +79,3 @@ class Algorithms:
 
         # Point q outside polygon
         return 0
-
-
-

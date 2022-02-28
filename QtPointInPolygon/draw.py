@@ -6,7 +6,7 @@ class Draw(QWidget):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.pol = QPolygon()
-        self.q = QPoint()
+        self.q = QPoint(-10, -10)
         self.add_vertex = True
 
     def mousePressEvent(self, e:QMouseEvent):
