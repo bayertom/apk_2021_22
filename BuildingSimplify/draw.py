@@ -9,6 +9,9 @@ class Draw (QWidget):
 
         # Building polygon
         self.pol = QPolygon()
+        #self.pol.append(QPoint(0,0))
+        #self.pol.append(QPoint(100, 100))
+        #self.pol.append(QPoint(200, 10))
 
         # Convex hull of polygon
         self.ch = QPolygon()
@@ -59,7 +62,8 @@ class Draw (QWidget):
 
         # Set pen and brush - enclosing rectangle
         qp.setPen(Qt.GlobalColor.magenta)
-        # qp.setBrush(Qt.GlobalColor.gray)
+        qp.setBrush(Qt.BrushStyle.NoBrush)
+        qp.drawPolygon(self.er)
 
         # End draw
         qp.end()

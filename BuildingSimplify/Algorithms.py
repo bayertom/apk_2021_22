@@ -22,7 +22,10 @@ class Algorithms:
         nv = (vx ** 2 + vy ** 2) ** 0.5
 
         # Angle
-        return abs(acos(uv / (nu * nv)))
+        try:
+            return abs(acos(uv / (nu * nv)))
+        except:
+            return 0
 
     def createCH(self, pol:QPolygon):
         ch = QPolygon()
@@ -32,7 +35,7 @@ class Algorithms:
 
         # Initialise Pj, Pj1
         pj = q
-        pj1 = QPoint(q.x()-10, q.y())
+        pj1 = QPoint(q.x() - 10, q.y())
 
         # Appending pivot to convex hull
         ch.append(q)
