@@ -6,10 +6,21 @@ class Draw (QWidget):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+
         # Building polygon
         self.pol = QPolygon()
+
         # Convex hull of polygon
         self.ch = QPolygon()
+
+        # Enclosing rectangle
+        self.er = QPolygon()
+
+    def getPolygon(self):
+        return self.pol
+
+    def setEnclosingRectangle(self, er: QPolygon):
+        self.er = er
 
     def mousePressEvent(self, e: QMouseEvent):
         # Get cursor position
@@ -32,12 +43,23 @@ class Draw (QWidget):
         # Start draw
         qp.begin(self)
 
-        # Set pen and brush
+        # Set pen and brush - building
         qp.setPen(Qt.GlobalColor.blue)
-        # qp.setBrush(Qt.GlobalColor.gray)
+        qp.setBrush(Qt.GlobalColor.gray)
 
-        # Draw polygon
+        # Draw building
         qp.drawPolygon(self.pol)
+
+        # Set pen and brush - convex hull
+        qp.setPen(Qt.GlobalColor.red)
+        #qp.setBrush(Qt.GlobalColor.gray)
+
+        # Draw convex hull
+        qp.drawPolygon(self.ch)
+
+        # Set pen and brush - enclosing rectangle
+        qp.setPen(Qt.GlobalColor.magenta)
+        # qp.setBrush(Qt.GlobalColor.gray)
 
         # End draw
         qp.end()

@@ -7,6 +7,8 @@
 
 
 from PyQt6 import QtCore, QtGui, QtWidgets
+from Algorithms import *
+from draw import Draw
 
 
 class Ui_MainForm(object):
@@ -51,7 +53,19 @@ class Ui_MainForm(object):
         QtCore.QMetaObject.connectSlotsByName(MainForm)
 
     def simplifyClick(self):
-        pass
+        # Get polygon
+        pol = self.Canvas.getPolygon()
+
+        # Create MAER
+        a = Algorithms()
+        er = a.minAreaEnclosingRectangle(pol)
+
+        #Set MAER
+        self.Canvas.setEnclosingRectangle(er)
+
+        #Repaint
+        self.Canvas.repaint()
+
 
     def clearClick(self):
         pass
@@ -64,7 +78,7 @@ class Ui_MainForm(object):
         self.comboBox.setItemText(1, _translate("MainForm", "Wall Average"))
         self.pushButton.setText(_translate("MainForm", "Simplify"))
         self.pushButton_2.setText(_translate("MainForm", "Clear"))
-from draw import Draw
+
 
 
 if __name__ == "__main__":
