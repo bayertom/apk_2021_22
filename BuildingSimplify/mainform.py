@@ -7,7 +7,7 @@
 
 
 from PyQt6 import QtCore, QtGui, QtWidgets
-from Algorithms import *
+from algorithms import *
 from draw import Draw
 
 
