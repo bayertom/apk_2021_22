@@ -33,7 +33,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>17</height>
+     <height>18</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -57,6 +57,7 @@
     <property name="title">
      <string>Settings</string>
     </property>
+    <addaction name="actionOptions"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -86,11 +87,15 @@
    <addaction name="actionCreate_Contour_Lines"/>
    <addaction name="actionAnalyze_Slope"/>
    <addaction name="actionAnalyze_Exposition"/>
+   <addaction name="separator"/>
+   <addaction name="actionOptions"/>
+   <addaction name="separator"/>
+   <addaction name="actionExit"/>
   </widget>
   <action name="actionOpen">
    <property name="icon">
     <iconset resource="res.qrc">
-     <normaloff>:/icons/V:/Bayer/APK/apk_2021_22-main/icons/open_file.png</normaloff>:/icons/V:/Bayer/APK/apk_2021_22-main/icons/open_file.png</iconset>
+     <normaloff>:/icons/icons/open_file.png</normaloff>:/icons/icons/open_file.png</iconset>
    </property>
    <property name="text">
     <string>Open</string>
@@ -105,7 +110,7 @@
   <action name="actionExit">
    <property name="icon">
     <iconset resource="res.qrc">
-     <normaloff>:/icons/V:/Bayer/APK/apk_2021_22-main/icons/exit.png</normaloff>:/icons/V:/Bayer/APK/apk_2021_22-main/icons/exit.png</iconset>
+     <normaloff>:/icons/icons/exit.png</normaloff>:/icons/icons/exit.png</iconset>
    </property>
    <property name="text">
     <string>Exit</string>
@@ -114,7 +119,7 @@
   <action name="actionCreate_DT">
    <property name="icon">
     <iconset resource="res.qrc">
-     <normaloff>:/icons/V:/Bayer/APK/apk_2021_22-main/icons/triangles2.png</normaloff>:/icons/V:/Bayer/APK/apk_2021_22-main/icons/triangles2.png</iconset>
+     <normaloff>:/icons/icons/triangles2.png</normaloff>:/icons/icons/triangles2.png</iconset>
    </property>
    <property name="text">
     <string>Create DT</string>
@@ -123,7 +128,7 @@
   <action name="actionCreate_Contour_Lines">
    <property name="icon">
     <iconset resource="res.qrc">
-     <normaloff>:/icons/V:/Bayer/APK/apk_2021_22-main/icons/contours2.png</normaloff>:/icons/V:/Bayer/APK/apk_2021_22-main/icons/contours2.png</iconset>
+     <normaloff>:/icons/icons/contours2.png</normaloff>:/icons/icons/contours2.png</iconset>
    </property>
    <property name="text">
     <string>Create Contour Lines</string>
@@ -132,7 +137,7 @@
   <action name="actionAnalyze_Slope">
    <property name="icon">
     <iconset resource="res.qrc">
-     <normaloff>:/icons/V:/Bayer/APK/apk_2021_22-main/icons/slope2.png</normaloff>:/icons/V:/Bayer/APK/apk_2021_22-main/icons/slope2.png</iconset>
+     <normaloff>:/icons/icons/slope2.png</normaloff>:/icons/icons/slope2.png</iconset>
    </property>
    <property name="text">
     <string>Analyze Slope</string>
@@ -141,7 +146,7 @@
   <action name="actionAnalyze_Exposition">
    <property name="icon">
     <iconset resource="res.qrc">
-     <normaloff>:/icons/V:/Bayer/APK/apk_2021_22-main/icons/orientation2.png</normaloff>:/icons/V:/Bayer/APK/apk_2021_22-main/icons/orientation2.png</iconset>
+     <normaloff>:/icons/icons/orientation2.png</normaloff>:/icons/icons/orientation2.png</iconset>
    </property>
    <property name="text">
     <string>Analyze Exposition</string>
@@ -153,6 +158,18 @@
   <action name="actionAbout">
    <property name="text">
     <string>About DTM analysis</string>
+   </property>
+  </action>
+  <action name="actionOptions">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/icons/icons/settings.png</normaloff>:/icons/icons/settings.png</iconset>
+   </property>
+   <property name="text">
+    <string>Options...</string>
+   </property>
+   <property name="toolTip">
+    <string>Options</string>
    </property>
   </action>
  </widget>
