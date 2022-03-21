@@ -155,7 +155,7 @@ class Algorithms:
             dS = pol[i].x()*(pol[(i+1) % n].y()-pol[(i-1+n) % n].y())
             S += dS
 
-        return 0.5 * S
+        return 0.5 * abs(S)
 
 
 
