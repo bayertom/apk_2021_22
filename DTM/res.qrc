@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>V:/Bayer/APK/apk_2021_22-main/icons/contours2.png</file>
+        <file>V:/Bayer/APK/apk_2021_22-main/icons/exit.png</file>
+        <file>V:/Bayer/APK/apk_2021_22-main/icons/open_file.png</file>
+        <file>V:/Bayer/APK/apk_2021_22-main/icons/orientation2.png</file>
+        <file>V:/Bayer/APK/apk_2021_22-main/icons/save.png</file>
+        <file>V:/Bayer/APK/apk_2021_22-main/icons/settings.png</file>
+        <file>V:/Bayer/APK/apk_2021_22-main/icons/slope2.png</file>
+        <file>V:/Bayer/APK/apk_2021_22-main/icons/triangles2.png</file>
+    </qresource>
+</RCC>
