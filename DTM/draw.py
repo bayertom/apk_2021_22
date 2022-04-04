@@ -2,39 +2,40 @@ from PyQt6.QtCore import *
 from PyQt6.QtGui import *
 from PyQt6.QtWidgets import *
 
+from typing import List
+from qpoint3d import *
+from edge import *
+
 class Draw (QWidget):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        # Building polygon
-        self.pol = QPolygon()
-        #self.pol.append(QPoint(0,0))
-        #self.pol.append(QPoint(100, 100))
-        #self.pol.append(QPoint(200, 10))
+        self.points : List[QPoint3D] = []       #Input points
+        self.dt : List[Edge] = []               #Delaunay edges
+        self.cont_lines : List[Edge] = []       #Contour lines
 
-        # Convex hull of polygon
-        self.ch = QPolygon()
+        #self.points.append(QPoint3D(0.0,0.0))
+        #self.points.append(QPoint3D(400, 0))
+        #self.points.append(QPoint3D(200, 400))
+        #self.points.append(QPoint3D(200, 200))
 
-        # Enclosing rectangle
-        self.er = QPolygon()
+    def getPoints(self):
+        return self.points
 
-    def getPolygon(self):
-        return self.pol
-
-    def setEnclosingRectangle(self, er: QPolygon):
-        self.er = er
+    def setDT(self, dt):
+        self.dt = dt
 
     def mousePressEvent(self, e: QMouseEvent):
         # Get cursor position
-        x = int(e.position().x())
-        y = int(e.position().y())
+        x = e.position().x()
+        y = e.position().y()
 
         # Create new point
-        p = QPoint(x, y)
+        p = QPoint3D(x, y, 0.0)
 
         # Add to polygon
-        self.pol.append(p)
+        self.points.append(p)
 
         # Repaint screen
         self.repaint()
@@ -47,24 +48,24 @@ class Draw (QWidget):
         qp.begin(self)
 
         # Set pen and brush - building
-        qp.setPen(Qt.GlobalColor.blue)
-        qp.setBrush(Qt.GlobalColor.gray)
+        qp.setPen(Qt.GlobalColor.black)
+        qp.setBrush(Qt.GlobalColor.white)
 
-        # Draw building
-        qp.drawPolygon(self.pol)
+        # Draw points
+        radius = 5
+        for p in self.points:
+            qp.drawEllipse(int(p.x()- radius), int(p.y()) - radius, 2 * radius, 2 * radius)
 
-        # Set pen and brush - convex hull
-        qp.setPen(Qt.GlobalColor.red)
-        #qp.setBrush(Qt.GlobalColor.gray)
+        #Draw Delaunay edges
+        qp.setPen(Qt.GlobalColor.green)
+        for e in self.dt:
+            qp.drawLine(int(e.getStart().x()), int(e.getStart().y()), int(e.getEnd().x()), int(e.getEnd().y()))
+            #qp.drawLine(QPointF(e.getStart()), QPointF(e.getEnd()))
 
-        # Draw convex hull
-        qp.drawPolygon(self.ch)
-
-        # Set pen and brush - enclosing rectangle
-        qp.setPen(Qt.GlobalColor.magenta)
-        qp.setBrush(Qt.BrushStyle.NoBrush)
-        qp.drawPolygon(self.er)
+        # Draw contour lines
+        qp.setPen(Qt.GlobalColor.black)
+        for e in self.cont_lines:
+            qp.drawLine(int(e.getStart().x()), int(e.getStart().y()), int(e.getEnd().x()), int(e.getEnd().y()))
 
         # End draw
         qp.end()
-

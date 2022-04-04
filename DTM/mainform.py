@@ -7,6 +7,8 @@
 
 from PyQt6 import QtCore, QtGui, QtWidgets
 from draw import Draw
+from algorithms import *
+from settings import *
 
 class Ui_MainForm(object):
     def setupUi(self, MainForm):
@@ -104,8 +106,22 @@ class Ui_MainForm(object):
         self.toolBar.addSeparator()
         self.toolBar.addAction(self.actionExit)
 
+        # Create dialog window
+        self.dialog = QtWidgets.QDialog()
+        self.ui = Ui_Dialog()
+        self.ui.setupUi(self.dialog)
+
         self.retranslateUi(MainForm)
         QtCore.QMetaObject.connectSlotsByName(MainForm)
+
+        # Connect icon and function: DT
+        self.actionCreate_DT.triggered.connect(self.runDT)
+
+        # Connect icon and function: Setting dialog
+        self.actionOptions.triggered.connect(self.showSettings)
+
+        # Connect icon and function: create contour lines
+        self.actionCreate_Contour_Lines.triggered.connect(self.runContourLines)
 
     def retranslateUi(self, MainForm):
         _translate = QtCore.QCoreApplication.translate
@@ -127,6 +143,28 @@ class Ui_MainForm(object):
         self.actionAbout.setText(_translate("MainForm", "About DTM analysis"))
         self.actionOptions.setText(_translate("MainForm", "Options..."))
         self.actionOptions.setToolTip(_translate("MainForm", "Options"))
+
+    def runDT(self):
+        #Get points
+        points = self.Canvas.getPoints()
+
+        #Create DT
+        a = Algorithms()
+        dt = a.DT(points)
+
+        #Set DT
+        self.Canvas.setDT(dt)
+        self.Canvas.repaint()
+
+    def runContourLines(self):
+        #Get contour line settings
+        z_min = float(self.ui.lineEdit.text())
+        z_max = float(self.ui.lineEdit_2.text())
+        dz = float(self.ui.lineEdit_3.text())
+
+    def showSettings(self):
+        #Show dialog window: settings
+        self.dialog.exec()
 
 
 if __name__ == "__main__":

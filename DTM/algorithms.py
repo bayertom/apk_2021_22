@@ -5,12 +5,14 @@ from PyQt6.QtWidgets import *
 from math import *
 from qpoint3d import *
 from edge import *
+from typing import List
+
 
 class Algorithms:
     def __init__(self):
         pass
 
-    def getPointAndLinePosition(self, a:QPoint3D, p1:QPoin3D, p2:QPoint3D):
+    def getPointAndLinePosition(self, a:QPoint3D, p1:QPoint3D, p2:QPoint3D):
         # Analyze position point and line
         eps = 1.0e-10
 
@@ -145,4 +147,87 @@ class Algorithms:
         return idx_min
 
 
+    def DT(self, points : List[QPoint3D]):
+        # Create Delaunay triangulation using incremental method
+        dt : List[Edge] = []
+        ael : List[Edge] = []
+
+        # Find pivot (minimum x)
+        q = min(points, key=lambda k: k.x())
+
+        # Point nearest to pivot q
+        i_nearest = self.getNearestPointIdx(q, points);
+        qn = points[i_nearest];
+
+        # Create new edge
+        e1 = Edge(q, qn);
+
+        # Find optimal Delaunay point
+        i_point = self.getDelaunayPointIdx(e1, points);
+
+        #Point has not been found, change orientation, search again
+        if i_point == -1:
+            e1.switch()
+            i_point = self.getDelaunayPointIdx(e1, points)
+
+        #Delaunay point + 3 rd vertex
+        v3 = points[i_point]
+
+        # Create remaining edges of the first triangle
+        e2 = Edge(e1.getEnd(), v3)
+        e3 = Edge(v3, e1.getStart())
+
+        # Add 3 edges to DT
+        dt.append(e1);
+        dt.append(e2);
+        dt.append(e3);
+
+        # Add 3 edges to AEL
+        ael.append(e1);
+        ael.append(e2);
+        ael.append(e3);
+
+        # Proces edges until AEL is empty
+        while ael:
+            #Get last edge
+            e1 = ael.pop();
+
+            #Change orientation
+            e1.switch();
+
+            #Find optimal Delaunay point
+            i_point = self.getDelaunayPointIdx(e1, points);
+
+            # Point has been found
+            if i_point != -1:
+                v3 = points[i_point]
+
+                # Create remaining edges of the second triangle
+                e2 = Edge(e1.getEnd(), v3)
+                e3 = Edge(v3, e1.getStart())
+
+                # Add 3 edges to DT
+                dt.append(e1);
+                dt.append(e2);
+                dt.append(e3);
+
+                # Update AEL
+                self.updateAEL(e2, ael)
+                self.updateAEL(e3, ael)
+
+        return dt
+
+    def updateAEL(self, e : Edge, ael : list[Edge]):
+        # Update AEL
+        e.switch();
+
+        #Look for e in AEL
+        if e in ael:
+            #Edge e has been found, remove from the list
+            ael.remove(e)
+
+        else:
+            #Edge e has not been found, add to the list
+            e.switch()
+            ael.append(e)
 

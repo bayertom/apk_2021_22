@@ -20,3 +20,7 @@ class Edge:
         temp = self.start
         self.start = self.end
         self.end = temp
+
+    def __eq__(self, other):
+        #Compare two edges
+        return self.start == other.start and self.end == other.end
