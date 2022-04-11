@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 7.0.0, 2022-04-04T22:27:40. -->
+<!-- Written by QtCreator 6.0.2, 2022-03-21T12:53:42. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
-  <value type="QByteArray">{61574db7-f999-4ab4-9073-38abf9fcbeb9}</value>
+  <value type="QByteArray">{46ec45e6-86fe-4bac-89ba-44a1a9728ce9}</value>
  </data>
  <data>
   <variable>ProjectExplorer.Project.ActiveTarget</variable>
@@ -91,9 +91,9 @@
   <variable>ProjectExplorer.Project.Target.0</variable>
   <valuemap type="QVariantMap">
    <value type="QString" key="DeviceType">Desktop</value>
-   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Desktop</value>
-   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Desktop</value>
-   <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">{84c5cd34-e669-4573-8f4d-6c26c76053a3}</value>
+   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Desktop Qt 6.2.3 MinGW 64-bit</value>
+   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Desktop Qt 6.2.3 MinGW 64-bit</value>
+   <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">qt.qt6.623.win64_mingw_kit</value>
    <value type="qlonglong" key="ProjectExplorer.Target.ActiveBuildConfiguration">-1</value>
    <value type="qlonglong" key="ProjectExplorer.Target.ActiveDeployConfiguration">0</value>
    <value type="qlonglong" key="ProjectExplorer.Target.ActiveRunConfiguration">0</value>
@@ -118,16 +118,16 @@
     <valuelist type="QVariantList" key="CustomOutputParsers"/>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">E:/Tomas/Python/apk_2021_22/DTM/mainform.py</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.E:/Tomas/Python/apk_2021_22/DTM/mainform.py</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">E:/Tomas/Python/apk_2021_22/DTM/mainform.py</value>
-    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{66f739ba-1767-4c58-93ef-57a85c956fe8}</value>
-    <value type="QString" key="PythonEditor.RunConfiguation.Script">E:\Tomas\Python\apk_2021_22\DTM\mainform.py</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">V:/Bayer/APK/apk_2021_22-main/DTM/mainform.py</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.V:/Bayer/APK/apk_2021_22-main/DTM/mainform.py</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">V:/Bayer/APK/apk_2021_22-main/DTM/mainform.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{445b5bd6-bd90-4146-8abc-2fa4f2c0a153}</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Script">V:\Bayer\APK\apk_2021_22-main\DTM\mainform.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">E:/Tomas/Python/apk_2021_22/DTM</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">V:/Bayer/APK/apk_2021_22-main/DTM</value>
    </valuemap>
    <value type="qlonglong" key="ProjectExplorer.Target.RunConfigurationCount">1</value>
   </valuemap>

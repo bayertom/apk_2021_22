@@ -17,9 +17,7 @@ class Edge:
 
     def switch(self):
         #Change edge orientation
-        temp = self.start
-        self.start = self.end
-        self.end = temp
+        return Edge(self.end, self.start)
 
     def __eq__(self, other):
         #Compare two edges

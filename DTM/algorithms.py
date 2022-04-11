@@ -167,7 +167,7 @@ class Algorithms:
 
         #Point has not been found, change orientation, search again
         if i_point == -1:
-            e1.switch()
+            e1 = e1.switch()
             i_point = self.getDelaunayPointIdx(e1, points)
 
         #Delaunay point + 3 rd vertex
@@ -193,7 +193,7 @@ class Algorithms:
             e1 = ael.pop();
 
             #Change orientation
-            e1.switch();
+            e1 = e1.switch();
 
             #Find optimal Delaunay point
             i_point = self.getDelaunayPointIdx(e1, points);
@@ -219,7 +219,7 @@ class Algorithms:
 
     def updateAEL(self, e : Edge, ael : list[Edge]):
         # Update AEL
-        e.switch();
+        e = e.switch();
 
         #Look for e in AEL
         if e in ael:
@@ -228,6 +228,6 @@ class Algorithms:
 
         else:
             #Edge e has not been found, add to the list
-            e.switch()
+            e = e.switch()
             ael.append(e)
 
