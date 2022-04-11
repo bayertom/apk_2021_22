@@ -1,1 +1,0 @@
-pyuic6 -o settings.py -x settings.ui
