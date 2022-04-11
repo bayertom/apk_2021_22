@@ -1,6 +1,11 @@
 from PyQt6.QtCore import *
 from PyQt6.QtGui import *
 from PyQt6.QtWidgets import *
+from random import *
+
+from typing import List
+from qpoint3d import *
+from edge import *
 
 from typing import List
 from qpoint3d import *
@@ -14,6 +19,7 @@ class Draw (QWidget):
         self.points : List[QPoint3D] = []       #Input points
         self.dt : List[Edge] = []               #Delaunay edges
         self.cont_lines : List[Edge] = []       #Contour lines
+<<<<<<< Updated upstream
 
         #self.points.append(QPoint3D(0.0,0.0))
         #self.points.append(QPoint3D(400, 0))
@@ -25,6 +31,25 @@ class Draw (QWidget):
 
     def setDT(self, dt):
         self.dt = dt
+=======
+
+        #self.points.append(QPoint3D(0.0,0.0))
+        #self.points.append(QPoint3D(400, 0))
+        #self.points.append(QPoint3D(200, 400))
+        #self.points.append(QPoint3D(200, 200))
+
+    def getPoints(self):
+        return self.points
+
+    def getDT(self):
+        return self.dt
+
+    def setDT(self, dt):
+        self.dt = dt
+
+    def setCL(self, cont_lines):
+        self.cont_lines = cont_lines
+>>>>>>> Stashed changes
 
     def mousePressEvent(self, e: QMouseEvent):
         # Get cursor position
@@ -32,7 +57,11 @@ class Draw (QWidget):
         y = e.position().y()
 
         # Create new point
+<<<<<<< Updated upstream
         p = QPoint3D(x, y, 0.0)
+=======
+        p = QPoint3D(x, y, 500*random())
+>>>>>>> Stashed changes
 
         # Add to polygon
         self.points.append(p)

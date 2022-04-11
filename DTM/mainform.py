@@ -162,6 +162,23 @@ class Ui_MainForm(object):
         z_max = float(self.ui.lineEdit_2.text())
         dz = float(self.ui.lineEdit_3.text())
 
+<<<<<<< Updated upstream
+=======
+        # Get triangulation
+        dt = self.Canvas.getDT()
+        if len(dt) == 0:
+            self.runDT()
+            dt = self.Canvas.getDT()
+
+        # Create contour lines
+        a = Algorithms()
+        contour_lines = a.createCL(dt, z_min, z_max, dz)
+        self.Canvas.setCL(contour_lines)
+
+        self.Canvas.repaint()
+
+
+>>>>>>> Stashed changes
     def showSettings(self):
         #Show dialog window: settings
         self.dialog.exec()

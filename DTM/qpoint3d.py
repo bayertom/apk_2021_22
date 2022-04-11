@@ -5,3 +5,9 @@ class QPoint3D(QPointF):
     def __init__(self, x:float, y:float, z:float = 0):
         super().__init__(x, y)
         self.z=z
+<<<<<<< Updated upstream
+=======
+
+    def getZ(self):
+        return self.z
+>>>>>>> Stashed changes

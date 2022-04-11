@@ -5,6 +5,10 @@ from PyQt6.QtWidgets import *
 from math import *
 from qpoint3d import *
 from edge import *
+<<<<<<< Updated upstream
+=======
+from numpy import *
+>>>>>>> Stashed changes
 from typing import List
 
 
@@ -231,3 +235,113 @@ class Algorithms:
             e = e.switch()
             ael.append(e)
 
+<<<<<<< Updated upstream
+=======
+    def getCLpoint(self, p1: QPoint3D, p2: QPoint3D, z: float):
+        # Returns point on contour line
+
+        # Get B coordinates
+        x_b = (p2.x()-p1.x())/(p2.getZ()-p1.getZ()) * (z - p1.getZ()) + p1.x()
+        y_b = (p2.y()-p1.y())/(p2.getZ()-p1.getZ()) * (z - p1.getZ()) + p1.y()
+
+        return QPoint3D (x_b, y_b, z)
+
+    def createCL(self, dt: List[Edge], zmin: float, zmax: float, dz: float):
+        # Generate contour lines in interval zmin - zmax, step dz
+        cl: List[Edge] = []
+        # Browse list of edges by triangles
+        for i in range(0, len(dt), 3):
+            # Triangle vertices
+            p1 = dt[i].getStart()
+            p2 = dt[i+1].getStart()
+            p3 = dt[i+2].getStart()
+
+            #Get heights of points
+            z1 = p1.getZ()
+            z2 = p2.getZ()
+            z3 = p3.getZ()
+
+            #Create horizontal planes inside interval zmin, zmax
+            for z in arange(zmin, zmax, dz):
+                # Height differencies
+                dz1 = z1 - z
+                dz2 = z2 - z
+                dz3 = z3 - z
+
+                # Intersected edges
+                t12 = dz1*dz2
+                t23 = dz2*dz3
+                t31 = dz3*dz1
+
+                # Triangle is planar
+                if dz1 == 0 and dz2 == 0 and dz3 == 0:
+                    continue
+
+                # Edge p1, p2 is collinear
+                elif dz1 == 0 and dz2 == 0:
+                    cl.append(dt[i])
+
+                # Edge p2, p3 is collinear
+                elif dz2 == 0 and dz3 == 0:
+                    cl.append(dt[i+1])
+
+                # Edge p3, p1 is collinear
+                elif dz3 == 0 and dz1 == 0:
+                    cl.append(dt[i+2])
+
+                # Intersected edges 1, 2 and 2, 3
+                elif (t12 <= 0 and t23 < 0) or (t12 < 0 and t23 <= 0):
+                    A = self.getCLpoint(p1, p2, z)
+                    B = self.getCLpoint(p2, p3, z)
+
+                    # Create edge
+                    e = Edge(A,B)
+
+                    # Add edge to list
+                    cl.append(e)
+
+                # Intersected edges 1, 2 and 2, 3
+                elif (t23 <= 0 and t31 < 0) or (t23 < 0 and t31 <= 0):
+                    B = self.getCLpoint(p2, p3, z)
+                    C = self.getCLpoint(p3, p1, z)
+
+                    # Create edge
+                    e = Edge(B, C)
+
+                    # Add edge to list
+                    cl.append(e)
+
+                # Intersected edges 3, 1 and 1, 2
+                elif (t31 <= 0 and t12 < 0) or (t31 < 0 and t12 <= 0):
+                    C = self.getCLpoint(p3, p1, z)
+                    A = self.getCLpoint(p1, p2, z)
+
+                    # Create edge
+                    e = Edge(C, A)
+
+                    # Add edge to list
+                    cl.append(e)
+
+        return cl
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> Stashed changes
