@@ -69,11 +69,10 @@ class Ui_MainForm(object):
         self.pushButton_4.setText(_translate("MainForm", "Clear All"))
 
     def clickSwitch(self):
-	pass
+	    pass
 
     def clickCreateOverlay(self):
        
-
         self.Canvas.repaint()
 
     def clickClear(self):
