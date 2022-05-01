@@ -129,10 +129,16 @@ def get2LinesIntersection(self, p1:QPointFB,p2:QPointFB,p3:QPointFB,p4:QPointFB)
 
 def updateVertices(polA:List[QPointFB], polB:List[QPointFB]):
     # Add line segment intersections to polygon vertices
-    for i in range(len(polA)):
+
+    #Process first polygon
+    i = 0
+    while i < len(polA):
        #Create dictionary
        D = {}
-       for j in range(len(polB)):
+
+       #Process second polygon
+       j = 0
+       while j < len(polB):
 
            #Get intersection
-           status, I = Qself.get2LinesIntersection(polA[i], polA[(i+1)%len(polA)], polB[j], polB[(j+1)%len(polB)])
+           status, I = self.get2LinesIntersection(polA[i], polA[(i+1)%len(polA)], polB[j], polB[(j+1)%len(polB)])
