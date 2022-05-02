@@ -8,3 +8,15 @@ class QPointFB(QPointF):
         self.beta = beta
         self.position = position
 
+    def getAlpha(self):
+        return self.alpha
+
+    def getBet(self):
+        return self.beta
+
+    def getPosition(self):
+        return self.position
+
+    def setPosition(self, position):
+        self.position = position
+
