@@ -172,16 +172,14 @@ class Algorithms:
             #Any intersection exists?
             if len(D) > 0:
 
-                # Increment i
-                i += 1
-
                 #Process all intersections
                 for k, v in D.items():
-                    # Add intersection to polygon A
-                    polA.insert(i, v)
-
+		    
                     #Increment i
                     i += 1
+
+                    # Add intersection to polygon A
+                    polA.insert(i, v)
 
             #Increment i
             i += 1
