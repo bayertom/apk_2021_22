@@ -72,7 +72,7 @@ class Algorithms:
             omega = self.get2LinesAngle(q, pol[i], q, pol[(i+1)%n])
 
             # Computing winding number
-            if pos == 1:
+            if pos == PointLinePosition.Left_HP:
                 # Point in the left halfplane
                 omega_sum += omega
             else:
@@ -91,8 +91,8 @@ class Algorithms:
         #Compute intersection of two lines, if exists
 
         # Directions
-        ux = p2.x()-p1.x()
-        uy = p2.y()-p1.y()
+        ux = p2.x() - p1.x()
+        uy = p2.y() - p1.y()
         vx = p4.x() - p3.x()
         vy = p4.y() - p3.y()
         wx = p1.x() - p3.x()
@@ -106,18 +106,18 @@ class Algorithms:
         # Collinear lines
         eps = 1e-10
         if abs(k3) < eps:
-            return LineAndLinePosition.Collinear, None
+            return LineAndLinePosition.Colinear, None
 
         # Compute alpha, beta
-        alpha = k1 / k2
-        beta = k2/ k3
+        alpha = k1 / k3
+        beta = k2 / k3
 
         #Parallel lines
         if abs(k1) <= eps and abs(k2) <= eps:
             return LineAndLinePosition.Parallel, None
 
         # Line intersect
-        if eps < alpha < 1-eps and eps < beta < 1-eps:
+        if 0 <= alpha <= 1 and 0 <= beta <= 1:
             # Get point of intersection
             x = p1.x() + alpha*ux
             y = p1.y() + alpha*uy
@@ -129,7 +129,7 @@ class Algorithms:
         #Skew lines
         return LineAndLinePosition.Skew, None
 
-    def updateVertices(polA:List[QPointFB], polB:List[QPointFB]):
+    def updateVertices(self, polA:List[QPointFB], polB:List[QPointFB]):
         # Add line segment intersections to polygon vertices
 
         # Epsilon
@@ -179,7 +179,7 @@ class Algorithms:
                     i += 1
 
                     # Add intersection to polygon A
-                    polA.insert(i, v)
+                    polA.insert(i, QPointFB(v.x(), v.y()))
 
             #Increment i
             i += 1
@@ -192,7 +192,7 @@ class Algorithms:
 
             # Get edge midpoint
             X_m = (polA[i].x() + polA[(i+1)%len(polA)].x()) / 2
-            Y_m = (polA[i].y() + polA[(i+1)%len(polA)].y() )/ 2
+            Y_m = (polA[i].y() + polA[(i+1)%len(polA)].y()) / 2
 
             m = QPointFB(X_m, Y_m)
 

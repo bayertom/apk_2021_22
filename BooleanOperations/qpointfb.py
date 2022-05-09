@@ -11,7 +11,7 @@ class QPointFB(QPointF):
     def getAlpha(self):
         return self.alpha
 
-    def getBet(self):
+    def getBeta(self):
         return self.beta
 
     def getPosition(self):

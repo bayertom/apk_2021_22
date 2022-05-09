@@ -13,6 +13,19 @@ class Draw(QWidget):
         self.res : List[Edge] = []
         self.addA = True
 
+        self.polA.append(QPointFB(0, 0))
+        self.polA.append(QPointFB(200, 0))
+        self.polA.append(QPointFB(200, 200))
+        self.polA.append(QPointFB(0, 200))
+
+        self.polB.append(QPointFB(100, 100))
+        self.polB.append(QPointFB(300, 100))
+        self.polB.append(QPointFB(300, 300))
+        self.polB.append(QPointFB(100, 300))
+
+    def switchPolygon(self):
+        self.addA = not self.addA
+
     def mousePressEvent(self, e: QMouseEvent):
         # Get position
         x = e.position().x()
@@ -63,7 +76,18 @@ class Draw(QWidget):
         # End draw
         qp.end()
 
-   
+    def getPolygons(self):
+        return self.polA, self.polB
 
+    def setResults(self, edges):
+        self.res = edges
+
+    def clearResults(self):
+        self.res.clear()
+
+    def clearCanvas(self):
+        self.polA.clear()
+        self.polB.clear()
+        self.res.clear()
 
 

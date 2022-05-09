@@ -1,6 +1,7 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 from draw import Draw
 from algorithms import *
+from booleanoperations import *
 
 class Ui_MainForm(object):
     def setupUi(self, MainForm):
@@ -69,17 +70,34 @@ class Ui_MainForm(object):
         self.pushButton_4.setText(_translate("MainForm", "Clear All"))
 
     def clickSwitch(self):
-	    pass
+        #Swich input polygon
+	    self.Canvas.switchPolygon()
 
     def clickCreateOverlay(self):
-       
+        #Create overlay
+        # Get Polygons
+        polA, polB = self.Canvas.getPolygons()
+
+        # Get type of Boolean operation
+        idx_BO = self.comboBox.currentIndex()
+        BO = BooleanOperation(idx_BO)
+
+        # Create overlay
+        a = Algorithms()
+        edges = a.createOverlay(polA, polB, BO)
+
+        # Draw result
+        self.Canvas.setResults(edges)
+
         self.Canvas.repaint()
 
     def clickClear(self):
-        pass
+        self.Canvas.clearResults()
+        self.Canvas.repaint()
 
     def clickClearAll(self):
-        pass
+        self.Canvas.clearCanvas()
+        self.Canvas.repaint()
 
 if __name__ == "__main__":
     import sys
